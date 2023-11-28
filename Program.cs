@@ -3,28 +3,28 @@
     static void Main()
     {
         string path = Path.Combine(Directory.GetCurrentDirectory(), "provinhaBarbadinha.txt");
-        string[] replacements = new string[] { "gloriosa", "bondade", "passam" };
-        int replacementIndex = 0;
+        string[] palindromo = new string[] { "gloriosa", "bondade", "passam" };
+        int palindromoIndex = 0;
 
         using (StreamReader sr = new StreamReader(path))
         {
-            string line;
-            while ((line = sr.ReadLine()) != null)
+            string linha;
+            while ((linha = sr.ReadLine()) != null)
             {
-                string decryptedText = DeTeusPulosDecrypt(line);
-                decryptedText = decryptedText.Replace('@', '\n');
-                string[] words = decryptedText.Split(' ');
+                string resultado = DeTeusPulosDecrypt(linha);
+                resultado = resultado.Replace('@', '\n');
+                string[] words = resultado.Split(' ');
 
                 for (int i = 0; i < words.Length; i++)
                 {
-                    if (IsPalindrome(words[i]) && replacementIndex < replacements.Length)
+                    if (EhPalindromo(words[i]) && palindromoIndex < palindromo.Length)
                     {
-                        words[i] = replacements[replacementIndex++];
+                        words[i] = palindromo[palindromoIndex++];
                     }
                 }
 
-                decryptedText = string.Join(" ", words);
-                Console.WriteLine(decryptedText);
+                resultado = string.Join(" ", words);
+                Console.WriteLine(resultado);
             }
         }
     }
@@ -48,7 +48,7 @@
         return new string(decryptedChars);
     }
 
-    static bool IsPalindrome(string word)
+    static bool EhPalindromo(string word)
     {
         if (word.Length <= 1)
         {
