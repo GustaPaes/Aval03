@@ -24,6 +24,7 @@
                 }
 
                 resultado = string.Join(" ", words);
+                Console.WriteLine("Aluno: Gustavo Paes de Liz");
                 Console.WriteLine(resultado);
             }
         }
